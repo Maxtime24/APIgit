@@ -1,0 +1,16 @@
+torch
+torchvision
+torchaudio
+transformers
+pandas
+scikit-learn
+sentencepiece
+Flask
+konlpy
+matplotlib
+koco
+torch
+protobuf
+fastapi
+uvicorn
+numpy
