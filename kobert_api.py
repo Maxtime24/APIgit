@@ -23,9 +23,10 @@ try:
     print(f"KoBERT 모델과 토크나이저가 Hugging Face Hub에서 로드되었습니다: {MODEL_NAME_OR_PATH}")
 except Exception as e:
     print(f"ERROR: 모델 로드 중 오류 발생 - {e}")
-    # 모델 로드에 실패하면 애플리케이션 시작을 막거나 적절히 처리할 수 있습니다.
+    # 모델 로드에 실패하면 애플리케이션 시작을 강제로 중단합니다.
     # Production 환경에서는 에러 로깅 후 서버 시작 실패로 이어지게 하는 것이 일반적입니다.
-    # raise HTTPException(status_code=500, detail="Model loading failed.") # FastAPI 앱 실행 중단
+    # FastAPI 애플리케이션 초기화 단계에서는 HTTPException보다 RuntimeError가 더 적합합니다.
+    raise RuntimeError(f"Failed to load KoBERT model: {e}. Application will not start.")
 
 # === 욕설 블랙리스트 정의 ===
 # 사용자 정의: 반드시 욕설로 간주되어야 하는 키워드들을 추가하세요.
