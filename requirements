@@ -1,9 +1,9 @@
 fastapi
 uvicorn
-transformers
+transformers==4.56.1
 sentencepiece
 numpy
 pandas
 scikit-learn
 imbalanced-learn
-torch==2.3.0+cpu  
+torch==2.8.0
