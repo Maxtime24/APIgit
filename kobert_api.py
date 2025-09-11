@@ -18,7 +18,9 @@ try:
     # AutoTokenizer와 AutoModelForSequenceClassification은
     # Hugging Face Hub의 모델 이름을 주면 자동으로 해당 모델을 다운로드하여 로드합니다.
     tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME_OR_PATH)
-    model = AutoModelForSequenceClassification.from_pretrained(MODEL_NAME_OR_PATH)
+    # ===== 이 부분이 핵심적인 변경 사항입니다: float16으로 로드 =====
+    model = AutoModelForSequenceClassification.from_pretrained(MODEL_NAME_OR_PATH, torch_dtype=torch.float16)
+    # =================================================================
     model.to(device).eval() # 모델을 선택된 장치로 옮기고 평가 모드로 설정
     print(f"KoBERT 모델과 토크나이저가 Hugging Face Hub에서 로드되었습니다: {MODEL_NAME_OR_PATH}")
 except Exception as e:
